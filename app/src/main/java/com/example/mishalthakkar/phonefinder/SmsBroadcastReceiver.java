@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class SmsBroadcastReceiver extends BroadcastReceiver{
         private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
         private static final String TAG = "SMSBroadcastReceiver";
-        String passcodes = MainActivity.passcode;
+        //String passcodes = MainActivity.passcode;
         @Override
         public void onReceive(Context context, Intent intent) {
 
@@ -41,7 +41,7 @@ public class SmsBroadcastReceiver extends BroadcastReceiver{
                         AudioManager am = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
                         assert am != null;
                         if(am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE || am.getRingerMode() == AudioManager.RINGER_MODE_SILENT || am.getRingerMode() == AudioManager.RINGER_MODE_NORMAL){
-                            Toast.makeText(context,"passcode matched " + messageBody, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context,"passcode matched.", Toast.LENGTH_SHORT).show();
                             am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
                             mPlayer.start();
                         } else if (1 == Settings.System.getInt(context.getContentResolver(), "vibrate_when_ringing", 0)){
@@ -50,7 +50,7 @@ public class SmsBroadcastReceiver extends BroadcastReceiver{
                         //Pass the message text to interface
 
                     }else{
-                        Toast.makeText(context, "Error" + messageBody, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "passcode match failed.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
