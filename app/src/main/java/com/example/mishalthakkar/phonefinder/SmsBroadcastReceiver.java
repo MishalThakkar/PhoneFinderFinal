@@ -38,6 +38,11 @@ public class SmsBroadcastReceiver extends BroadcastReceiver{
                     String messageBody = smsMessage.getMessageBody();
                     if (passcode.equals(messageBody))
                     {
+
+                        //////////////////////////////////Code for SendSms
+
+                        /////////////////////////////////
+
                         AudioManager am = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
                         assert am != null;
                         if(am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE || am.getRingerMode() == AudioManager.RINGER_MODE_SILENT || am.getRingerMode() == AudioManager.RINGER_MODE_NORMAL){
